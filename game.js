@@ -17,7 +17,7 @@ const gameBtn = {
   y: 550, // y position (centre of the button)
   w: 260, // width
   h: 90, // height
-  label: "PRESS HERE", // text shown on the button
+  label: "Wait for the Night to Pass...", // text shown on the button
 };
 
 // ------------------------------
@@ -27,20 +27,16 @@ const gameBtn = {
 // when currentScreen === "game"
 function drawGame() {
   // Set background colour for the game screen
-  background(240, 230, 140);
+  background("#272A4F");
 
   // ---- Title and instructions text ----
-  fill(0); // black text
+  fill("white"); // black text
   textSize(32);
   textAlign(CENTER, CENTER);
-  text("Game Screen", width / 2, 160);
+  text("Currently Night Time...", width / 2, 160);
 
   textSize(18);
-  text(
-    "Click the button (or press ENTER) for a random result.",
-    width / 2,
-    210,
-  );
+  text("Click a Button to Decide your Next Move", width / 2, 210);
 
   // ---- Draw the button ----
   // We pass the button object to a helper function
