@@ -26,7 +26,8 @@ function drawInstr() {
   // \n creates a line break in the text
   // This is useful for simple multi-line instructions
   const lines =
-    "Press the game button.\n" + "You have a chance to win or lose!";
+    "Choose Between the Options on The Screen\n" +
+    "Try to Find the Missing Key!";
 
   text(lines, width / 2, 160);
 
@@ -34,7 +35,7 @@ function drawInstr() {
   // This button lets the player return to the start screen
   const backBtn = {
     x: width / 2, // centred horizontally
-    y: 560,
+    y: 500,
     w: 220,
     h: 70,
     label: "BACK",
