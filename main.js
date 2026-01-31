@@ -53,13 +53,13 @@ function draw() {
   else if (currentScreen === "game") drawGame();
   else if (currentScreen === "win") drawWin();
   else if (currentScreen === "lose") drawLose();
-
-  // (Optional teaching note)
-  // This “if/else chain” is a very common early approach.
-  // Later in the course you might replace it with:
-  // - a switch statement, or
-  // - an object/map of screens
 }
+
+// (Optional teaching note)
+// This “if/else chain” is a very common early approach.
+// Later in the course you might replace it with:
+// - a switch statement, or
+// - an object/map of screens
 
 // ------------------------------
 // mousePressed() runs once each time the mouse is clicked

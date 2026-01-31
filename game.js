@@ -79,15 +79,3 @@ function gameMousePressed() {
 function gameKeyPressed() {
   if (keyCode === ENTER) triggerRandomOutcome("wait"); // default
 }
-
-// ------------------ Game logic ------------------
-function triggerRandomOutcome(action) {
-  if (action === "wait") {
-    if (random() < 0.5) currentScreen = "win";
-    else currentScreen = "lose";
-  } else if (action === "explore") {
-    if (random() < 0.6)
-      currentScreen = "win"; // maybe different chance
-    else currentScreen = "lose";
-  }
-}
