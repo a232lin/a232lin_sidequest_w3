@@ -1,4 +1,4 @@
-## Project Title
+## Side Quest Week 3
 
 GBDA302 Week 3 Example 1: Instructions Screen with Back button
 
@@ -7,6 +7,8 @@ GBDA302 Week 3 Example 1: Instructions Screen with Back button
 ## Authors
 
 Karen Cochrane and David Han
+
+Edited by Angela Lin / a232lin / 21084451
 
 ---
 
