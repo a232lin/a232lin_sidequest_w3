@@ -155,10 +155,66 @@ function dayMousePressed() {
   const caveBtn = { x: 200, y: 300, w: 300, h: 70 };
 
   if (isHover(riverBtn)) {
-    // Go somewhere else, maybe another page
-    currentScreen = "river";
+    currentScreen = "river"; // show the river page
   } else if (isHover(caveBtn)) {
-    // Go to the "Oh no" dragon page
-    currentScreen = "instr";
+    currentScreen = "instr"; // the Oh No page with the dragon
+  }
+}
+
+function drawRiver() {
+  // ---- Background (under the river) ----
+  background(0, 105, 148); // deep water blue
+
+  // ---- River floor ----
+  fill(50, 50, 50); // dark gray rocks/sand
+  rect(width / 2, height - 50, width, 100);
+
+  // ---- Some bubbles / water effect (optional) ----
+  fill(255, 255, 255, 100);
+  for (let i = 0; i < 20; i++) {
+    ellipse(random(width), random(height - 200, height - 50), 10, 10);
+  }
+
+  // ---- Title and text ----
+  fill(255);
+  textAlign(CENTER, CENTER);
+  textSize(36);
+  text("You Jumped into the River!", width / 2, 100);
+
+  textSize(18);
+  text("Wait is that...THE KEY!!!", width / 2, 160);
+
+  // ---- Key in the river (bigger, higher, both teeth on top) ----
+  fill(255, 223, 0); // bright yellow for the key
+  noStroke();
+
+  // key shaft (main body) – bigger and higher
+  rect(width / 2, height - 250, 80, 20, 5); // horizontal rectangle, main body
+
+  // key teeth (both on top of the shaft)
+  rect(width / 2 - 10, height - 260, 12, 25); // left tooth, closer to handle
+  rect(width / 2 + 20, height - 260, 12, 25); // right tooth, further along shaft
+
+  // key handle – bigger and higher
+  ellipse(width / 2 - 50, height - 250, 40, 40); // round handle
+
+  // ---- Continue button ----
+  const continueBtn = {
+    x: width / 2,
+    y: 500,
+    w: 220,
+    h: 70,
+    label: "Play Again!",
+  };
+
+  drawInstrButton(continueBtn); // reuse button style
+  cursor(isHover(continueBtn) ? HAND : ARROW);
+}
+
+function riverMousePressed() {
+  const continueBtn = { x: width / 2, y: 500, w: 220, h: 70 };
+
+  if (isHover(continueBtn)) {
+    currentScreen = "start"; // <-- goes back to the start screen
   }
 }

@@ -54,6 +54,7 @@ function draw() {
   else if (currentScreen === "win") drawWin();
   else if (currentScreen === "lose") drawLose();
   else if (currentScreen === "day") drawDay();
+  else if (currentScreen === "river") drawRiver();
 }
 
 // (Optional teaching note)
@@ -88,6 +89,9 @@ function mousePressed() {
   else if (currentScreen === "game") gameMousePressed();
   // The ?.() means “call this function only if it exists”
   // This prevents errors if a screen doesn’t implement a handler.
+  else if (currentScreen === "day") dayMousePressed?.();
+  else if (currentScreen === "river") riverMousePressed();
+  else if (currentScreen === "river") riverMousePressed?.();
   else if (currentScreen === "win") winMousePressed?.();
   else if (currentScreen === "lose") loseMousePressed?.();
 }
