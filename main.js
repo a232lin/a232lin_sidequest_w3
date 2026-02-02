@@ -65,6 +65,7 @@ function draw() {
 // mousePressed() runs once each time the mouse is clicked
 // ------------------------------
 // This routes mouse input to the correct screen handler.
+
 function mousePressed() {
   // Each screen *may* define a mouse handler:
   // start.js         → startMousePressed()
@@ -72,6 +73,14 @@ function mousePressed() {
   // game.js          → gameMousePressed()
   // win.js           → winMousePressed()
   // lose.js          → loseMousePressed()
+
+  function mousePressed() {
+    startMousePressed?.();
+    instrMousePressed?.();
+    gameMousePressed?.();
+    winMousePressed?.();
+    loseMousePressed?.();
+  }
 
   if (currentScreen === "start") startMousePressed();
   else if (currentScreen === "instr") instrMousePressed();

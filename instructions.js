@@ -53,10 +53,9 @@ function drawInstr() {
 // ------------------------------
 // Called from main.js only when currentScreen === "instr"
 function instrMousePressed() {
-  // Button data must match the draw position
-  const backBtn = { x: width / 2, y: 560, w: 220, h: 70 };
+  // Must match drawInstr()
+  const backBtn = { x: width / 2, y: 500, w: 220, h: 70 };
 
-  // If the button is clicked, return to the start screen
   if (isHover(backBtn)) {
     currentScreen = "start";
   }
