@@ -12,22 +12,80 @@
 // only when currentScreen === "instr"
 function drawInstr() {
   // Light neutral background
-  background(240);
+  background("#4D4341");
+
+  // ---- Simple smoky effect ----
+  noStroke();
+  for (let i = 0; i < 40; i++) {
+    // more puffs
+    fill(200, 200, 200, random(20, 70)); // softer transparency
+    let sx = width / 2 + random(-300, 300); // wider horizontal spread
+    let sy = 250 + random(-100, 150); // taller vertical spread
+    let sw = random(50, 120); // bigger width
+    let sh = random(30, 80); // bigger height
+    ellipse(sx, sy, sw, sh); // draw smoke puff
+  }
+
+  noStroke();
+
+  // ---- Dragon body ----
+  fill(200, 0, 0);
+  ellipse(width / 2, 330, 160, 80); // body
+  ellipse(width / 2 + 90, 320, 60, 25); // tail
+
+  // ---- Legs ----
+  fill(180, 0, 0);
+  ellipse(width / 2 - 40, 370, 25, 35); // left leg
+  ellipse(width / 2 + 40, 370, 25, 35); // right leg
+
+  // ---- Head ----
+  fill(200, 0, 0);
+  ellipse(width / 2 - 90, 300, 70, 60); // head
+
+  // ---- Eyes ----
+  fill(255, 255, 0);
+  ellipse(width / 2 - 105, 290, 14, 14); // left eye
+  ellipse(width / 2 - 75, 290, 10, 10); // right eye (angry squint)
+
+  // ---- Mouth (open wide) ----
+  fill(150, 0, 0);
+  arc(width / 2 - 90, 310, 50, 40, PI / 4, (3 * PI) / 4); // big open mouth
+
+  // ---- Fire (big, flickery) ----
+  fill(255, random(180, 255), 0, 200);
+  triangle(
+    width / 2 - 120,
+    310,
+    width / 2 - 200,
+    280 + random(-5, 5),
+    width / 2 - 200,
+    340 + random(-5, 5),
+  );
+
+  // ---- Spikes along back (more threatening) ----
+  fill(220, 0, 0);
+  triangle(width / 2 - 40, 290, width / 2 - 30, 270, width / 2 - 20, 290);
+  triangle(width / 2, 290, width / 2 + 10, 270, width / 2 + 20, 290);
+  triangle(width / 2 + 40, 290, width / 2 + 50, 270, width / 2 + 60, 290);
+  triangle(width / 2 + 70, 300, width / 2 + 80, 280, width / 2 + 90, 300);
+
+  // ---- Wings (pointed, looming) ----
+  fill(180, 0, 0, 180);
+  triangle(width / 2 - 30, 300, width / 2 - 100, 220, width / 2 - 10, 270); // left wing
+  triangle(width / 2 + 30, 300, width / 2 + 100, 220, width / 2 + 10, 270); // right wing
 
   // ---- Screen title ----
   fill(0);
   textAlign(CENTER, TOP);
   textSize(36);
-  text("Instructions", width / 2, 80);
+  text("Oh no...", width / 2, 80);
 
   // ---- Instruction text ----
   textSize(18);
 
   // \n creates a line break in the text
   // This is useful for simple multi-line instructions
-  const lines =
-    "Choose Between the Options on The Screen\n" +
-    "Try to Find the Missing Key!";
+  const lines = "The Dragon Has Found YOU!\n" + "You're DEAD...!";
 
   text(lines, width / 2, 160);
 
@@ -38,7 +96,7 @@ function drawInstr() {
     y: 500,
     w: 220,
     h: 70,
-    label: "BACK",
+    label: "TRY AGAIN",
   };
 
   // Draw the back button

@@ -68,14 +68,14 @@ function drawStart() {
     y: 320,
     w: 240,
     h: 80,
-    label: "Begin the  Journey",
+    label: "Move Forward",
   };
   const instrBtn = {
     x: width / 2,
     y: 430,
     w: 240,
     h: 80,
-    label: "How to Play",
+    label: "Stay in Place",
   };
   drawButton(startBtn);
   drawButton(instrBtn);

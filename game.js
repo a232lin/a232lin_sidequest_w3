@@ -21,6 +21,13 @@ const waitBtn = {
   label: "Wait for the Night to Pass...",
 };
 
+const trees = [];
+for (let i = 0; i < 6; i++) {
+  let treeX = i * 150 + 50;
+  let treeY = 400; // fixed Y
+  trees.push({ x: treeX, y: treeY });
+}
+
 const exploreBtn = {
   x: 450,
   y: 450, // below waitBtn
@@ -71,11 +78,87 @@ function drawGameButton({ x, y, w, h, label, textSize: btnTextSize }) {
 
 // ------------------ Mouse input ------------------
 function gameMousePressed() {
-  if (isHover(waitBtn)) triggerRandomOutcome("wait");
-  else if (isHover(exploreBtn)) triggerRandomOutcome("explore");
+  if (isHover(waitBtn)) {
+    // Switch to the sunny forest page
+    currentScreen = "day";
+  } else if (isHover(exploreBtn)) {
+    // Switch to the dragon page
+    currentScreen = "instr";
+  }
 }
 
 // ------------------ Keyboard input ------------------
 function gameKeyPressed() {
   if (keyCode === ENTER) triggerRandomOutcome("wait"); // default
+}
+
+function drawDay() {
+  // ---- Sky background ----
+  background(135, 206, 235); // light blue sky
+
+  // ---- Sun ----
+  fill(255, 223, 0); // yellow
+  noStroke();
+  ellipse(750, 100, 100, 100); // sun in top-right corner
+
+  // ---- Forest (trees) ----
+  fill(34, 139, 34); // dark green leaves
+  for (let i = 0; i < trees.length; i++) {
+    const tree = trees[i];
+    // Tree trunk
+    fill(139, 69, 19);
+    rect(tree.x, tree.y + 50, 20, 170);
+    // Tree foliage
+    fill(34, 139, 34);
+    ellipse(tree.x, tree.y, 80, 80);
+  }
+
+  // ---- Ground ----
+  fill(34, 139, 34);
+  rect(width / 2, 580, width, 100);
+
+  // ---- Title and text ----
+  fill(0);
+  textAlign(CENTER, CENTER);
+  textSize(36);
+  text("After a Good Night's Sleep, the Sun Has Risen", width / 2, 100);
+
+  textSize(18);
+  text("It Is Now Daytime!", width / 2, 160);
+
+  // ---- Continue button ----
+  const riverBtn = {
+    x: 700,
+    y: 300,
+    w: 300,
+    h: 70,
+    label: "Search the River",
+  };
+
+  const caveBtn = {
+    x: 200,
+    y: 300,
+    w: 300,
+    h: 70,
+    label: "Search the Cave",
+  };
+
+  drawInstrButton(riverBtn); // reuse your button style
+  cursor(isHover(riverBtn) ? HAND : ARROW);
+
+  drawInstrButton(caveBtn); // reuse your button style
+  cursor(isHover(caveBtn) ? HAND : ARROW);
+}
+
+function dayMousePressed() {
+  const riverBtn = { x: 700, y: 300, w: 300, h: 70 };
+  const caveBtn = { x: 200, y: 300, w: 300, h: 70 };
+
+  if (isHover(riverBtn)) {
+    // Go somewhere else, maybe another page
+    currentScreen = "river";
+  } else if (isHover(caveBtn)) {
+    // Go to the "Oh no" dragon page
+    currentScreen = "instr";
+  }
 }

@@ -53,6 +53,7 @@ function draw() {
   else if (currentScreen === "game") drawGame();
   else if (currentScreen === "win") drawWin();
   else if (currentScreen === "lose") drawLose();
+  else if (currentScreen === "day") drawDay();
 }
 
 // (Optional teaching note)
